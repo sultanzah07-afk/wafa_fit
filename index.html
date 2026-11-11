@@ -8,12 +8,9 @@
 <meta name="apple-mobile-web-app-title" content="Wafa Fit">
 <meta name="theme-color" content="#090811">
 <title>Wafa Fit | وفاء فيت</title>
-
-<!-- أيقونة الموقع القياسية -->
 <link rel="icon" type="image/png" href="logo.png">
-
-<!-- أيقونة مخصصة لأجهزة أبل (آيفون/آيباد) عند الإضافة للشاشة الرئيسية -->
 <link rel="apple-touch-icon" href="logo.png">
+
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 :root{
@@ -24,7 +21,19 @@
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:white;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
 button,input,select,textarea{font-family:inherit}
 button{cursor:pointer}
-#app{height:100%;height:100dvh;display:flex;flex-direction:column;overflow:hidden;background:radial-gradient(ellipse at 90% -10%,#6f42bd28,transparent 42%),var(--bg);padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+
+#app{
+height:100%;
+height:100dvh;
+display:flex;
+flex-direction:column;
+overflow:hidden;
+min-height:0;
+background:radial-gradient(ellipse at 90% -10%,#6f42bd28,transparent 42%),var(--bg);
+padding-top:env(safe-area-inset-top);
+padding-bottom:0;
+}
+
 .topbar{flex-shrink:0;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:#0c0b14ed;backdrop-filter:blur(15px)}
 .brand{display:flex;align-items:center;gap:11px}
 .brand-logo{width:44px;height:44px;border-radius:15px;display:grid;place-items:center;font-size:19px;background:linear-gradient(145deg,#7140d7,#b18aff);box-shadow:0 5px 20px #8b5cf644;font-weight:1000}
@@ -32,8 +41,20 @@ button{cursor:pointer}
 .brand-sub{font-size:10px;color:var(--muted);margin-top:4px}
 .top-actions{display:flex;gap:7px}
 .top-icon{width:39px;height:39px;border-radius:13px;border:1px solid var(--border);background:var(--surface);color:white;font-size:17px}
-.content{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:0 15px 24px;scrollbar-width:none}
+
+.content{
+flex:1 1 0%;
+min-height:0;
+min-width:0;
+overflow-y:auto;
+overflow-x:hidden;
+overscroll-behavior:contain;
+-webkit-overflow-scrolling:touch;
+padding:0 15px calc(32px + env(safe-area-inset-bottom));
+scrollbar-width:none;
+}
 .content::-webkit-scrollbar{display:none}
+
 .page{display:none;animation:appear .2s ease}
 .page.active{display:block}
 @keyframes appear{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
@@ -41,6 +62,7 @@ button{cursor:pointer}
 .welcome h1{font-size:24px;margin:0 0 7px;font-weight:950;letter-spacing:-.4px}
 .welcome p{color:var(--muted);font-size:12px;line-height:1.9;margin:0}
 .date-chip{display:inline-flex;align-items:center;gap:6px;background:#211b35;border:1px solid #3c3157;color:#d4c3ff;padding:7px 11px;border-radius:30px;font-size:10px;font-weight:800;margin-top:12px}
+
 .hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#382064,#6637b3 55%,#9565ff);padding:20px;border-radius:24px;margin-bottom:13px;box-shadow:0 12px 30px #6d28d933}
 .hero:after{content:"";position:absolute;width:170px;height:170px;border:1px solid #ffffff18;border-radius:50%;top:-85px;left:-40px;box-shadow:0 0 0 22px #ffffff08,0 0 0 45px #ffffff05}
 .hero-label{font-size:12px;color:#eee5ff;font-weight:700}
@@ -52,6 +74,7 @@ button{cursor:pointer}
 .hero-bottom{display:flex;justify-content:space-between;gap:8px;font-size:10px;color:#eee5ff}
 .limit-alert{display:none;background:#481d2b;border:1px solid #a74760;color:#ffe1e8;padding:12px;border-radius:14px;margin-top:13px;font-size:11px;line-height:1.8;position:relative;z-index:1}
 .limit-alert strong{display:block;font-size:13px;margin-bottom:3px}
+
 .grid-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .metric-card{background:linear-gradient(145deg,#1b1929,#12111b);border:1px solid var(--border);border-radius:19px;padding:14px;min-width:0;position:relative;overflow:hidden}
 .metric-icon{width:35px;height:35px;display:grid;place-items:center;font-size:18px;border-radius:12px;background:#302449;margin-bottom:10px}
@@ -61,16 +84,25 @@ button{cursor:pointer}
 .section-heading{display:flex;justify-content:space-between;align-items:center;margin:22px 2px 12px}
 .section-heading h2{font-size:15px;font-weight:950;margin:0}
 .section-heading span{color:var(--purple2);font-size:11px;font-weight:850;cursor:pointer}
+
 .card{background:linear-gradient(145deg,#1a1927,#12111a);border:1px solid var(--border);border-radius:20px;padding:15px;margin-bottom:13px}
 .input-group{margin-bottom:13px}
 .input-group label{display:block;font-size:12px;font-weight:850;margin-bottom:7px;color:#eee}
 input,select,textarea{width:100%;border:1px solid var(--border);background:#0e0d16;color:white;border-radius:13px;padding:13px;font-size:14px;outline:none;appearance:none}
 input:focus,select:focus,textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px #9565ff18}
+/* إصلاح مربع حفظ الوجبة دون التأثير على بقية الحقول */
+input[type="checkbox"]{
+ width:18px!important;height:18px!important;min-width:18px;
+ padding:0!important;margin:0;appearance:auto!important;
+ -webkit-appearance:checkbox!important;accent-color:var(--purple);
+ flex:0 0 18px;cursor:pointer;
+}
 input::placeholder,textarea::placeholder{color:#777386}
 select option{background:#141321;color:white}
 .primary-btn{border:0;background:linear-gradient(135deg,#7544d5,#a477ff);color:white;padding:14px;border-radius:14px;width:100%;font-size:13px;font-weight:950;box-shadow:0 5px 17px #6d28d933}
 .secondary-btn{border:1px solid var(--border);background:#242134;color:#d0bfff;padding:12px;border-radius:13px;width:100%;font-size:12px;font-weight:850}
 .danger-btn{border:1px solid #62303d;background:#351b25;color:#fb7185;padding:12px;border-radius:13px;width:100%;font-size:12px;font-weight:850}
+
 .food-list{display:flex;flex-direction:column;gap:9px}
 .food-item{display:flex;align-items:center;gap:10px;background:#171622;border:1px solid var(--border);border-radius:16px;padding:11px;min-width:0}
 .food-emoji{width:41px;height:41px;border-radius:13px;background:#302449;display:grid;place-items:center;font-size:21px;flex-shrink:0}
@@ -79,6 +111,7 @@ select option{background:#141321;color:white}
 .food-details span{display:block;font-size:10px;color:var(--muted);margin-top:5px}
 .food-calories{font-size:11px;font-weight:950;white-space:nowrap}
 .delete-btn{background:#3a202b;color:#fb7185;border:0;width:28px;height:28px;border-radius:9px;flex-shrink:0}
+
 .macro-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:12px}
 .macro-box{background:#100f18;border:1px solid var(--border);border-radius:13px;padding:10px 5px;text-align:center;min-width:0}
 .macro-box span{display:block;font-size:9px;color:var(--muted);margin-bottom:5px}
@@ -87,6 +120,7 @@ select option{background:#141321;color:white}
 .macro-box.protein strong{color:var(--green)}
 .macro-box.fat strong{color:var(--blue)}
 .macro-box.cal strong{color:var(--purple2)}
+
 .water-card{display:flex;align-items:center;gap:13px}
 .water-emoji{font-size:34px}
 .water-info{flex:1;min-width:0}
@@ -96,6 +130,7 @@ select option{background:#141321;color:white}
 .water-actions button{border:1px solid #44365e;background:#29213d;color:#d0bfff;border-radius:10px;padding:9px 10px;font-size:11px;font-weight:900}
 .mini-track{height:6px;background:#302b3c;border-radius:10px;overflow:hidden;margin-top:9px}
 .mini-fill{height:100%;width:0;background:linear-gradient(90deg,#5c9dff,#a78bfa);border-radius:10px}
+
 .activity-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 0;border-bottom:1px solid var(--border)}
 .activity-row:last-child{border:0}
 .activity-left{display:flex;align-items:center;gap:9px;min-width:0}
@@ -103,6 +138,7 @@ select option{background:#141321;color:white}
 .activity-left strong{display:block;font-size:12px}
 .activity-left small{display:block;font-size:10px;color:var(--muted);margin-top:4px}
 .activity-cal{color:var(--green);font-size:11px;font-weight:900;white-space:nowrap}
+
 .macro-progress-card{background:#171622;border:1px solid var(--border);padding:14px;border-radius:18px;margin-bottom:10px}
 .macro-progress-head{display:flex;justify-content:space-between;align-items:center;font-size:11px;margin-bottom:9px}
 .macro-progress-head strong{font-size:12px}
@@ -115,6 +151,7 @@ select option{background:#141321;color:white}
 .bar{width:100%;max-width:30px;background:linear-gradient(180deg,#b49aff,#7040cf);border-radius:9px 9px 3px 3px;min-height:4px}
 .bar-label{font-size:9px;color:var(--muted)}
 .bar-value{font-size:10px;font-weight:900;color:#c4b5fd}
+
 .ai-box{background:linear-gradient(135deg,#241a38,#171522);border:1px solid #44315f;border-radius:20px;padding:16px;margin-bottom:14px}
 .ai-title{font-weight:950;font-size:14px;margin-bottom:11px}
 .ai-response{background:#100f18;border:1px solid var(--border);padding:13px;border-radius:14px;font-size:12px;line-height:1.9;color:#ddd6fe;margin-top:12px;display:none}
@@ -128,12 +165,28 @@ select option{background:#141321;color:white}
 .saved-meal-top span{font-size:10px;color:#c4b5fd}
 .saved-meal-actions{display:flex;gap:7px;margin-top:11px}
 .saved-meal-actions button{flex:1}
-.bottom-nav{flex-shrink:0;display:flex;justify-content:space-around;align-items:center;background:#100f18ed;border-top:1px solid var(--border);padding:8px 3px calc(7px + env(safe-area-inset-bottom));min-height:65px;backdrop-filter:blur(15px)}
+.saved-meal-type{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;padding-top:11px;border-top:1px solid var(--border);font-size:11px;color:var(--muted)}
+.saved-meal-type select{max-width:58%;padding:9px 11px;border-radius:10px;background:#100f18;color:var(--text);border:1px solid var(--border);font:inherit}
+
+.bottom-nav{
+flex:0 0 auto;
+position:relative;
+z-index:10;
+display:flex;
+justify-content:space-around;
+align-items:center;
+background:#100f18ed;
+border-top:1px solid var(--border);
+padding:8px 3px calc(7px + env(safe-area-inset-bottom));
+min-height:65px;
+backdrop-filter:blur(15px);
+}
 .nav-item{border:0;background:transparent;color:#777386;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:9px;font-weight:850;padding:6px 4px;border-radius:12px;flex:1}
 .nav-icon{font-size:19px}
 .nav-item.active{color:#d2c0ff;background:#2a2140}
 .creator{text-align:center;color:#777386;font-size:10px;font-weight:850;padding:18px 0 9px}
-.toast{position:fixed;bottom:85px;left:50%;transform:translateX(-50%);background:#272333;border:1px solid #51406c;color:white;padding:12px 17px;border-radius:14px;font-size:12px;font-weight:850;z-index:3000;display:none;max-width:90%;white-space:normal;text-align:center;box-shadow:0 6px 20px #0008}
+.toast{position:fixed;bottom:calc(85px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:#272333;border:1px solid #51406c;color:white;padding:12px 17px;border-radius:14px;font-size:12px;font-weight:850;z-index:3000;display:none;max-width:90%;white-space:normal;text-align:center;box-shadow:0 6px 20px #0008}
+
 #onboarding{position:fixed;inset:0;z-index:2000;background:radial-gradient(ellipse at top,#2b1949 0%,#100e19 50%,#090811 100%);display:none;overflow-y:auto;padding:calc(20px + env(safe-area-inset-top)) 18px calc(25px + env(safe-area-inset-bottom))}
 .onboard-inner{max-width:440px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;justify-content:center}
 .onboard-top{text-align:center;margin-bottom:19px}
@@ -167,18 +220,12 @@ select option{background:#141321;color:white}
 .goal-setting{background:#11101a;border:1px solid var(--border);border-radius:15px;padding:12px;margin-bottom:10px}
 .goal-setting label{display:block;font-size:11px;font-weight:850;margin-bottom:7px}
 .goal-setting input{font-size:16px;font-weight:900}
-@media(min-width:600px){#app{max-width:430px;margin:auto;height:100dvh;border-left:1px solid var(--border);border-right:1px solid var(--border)}body{background:#242230}}
+
+@media(min-width:600px){
+#app{max-width:430px;margin:auto;height:100dvh;border-left:1px solid var(--border);border-right:1px solid var(--border)}
+body{background:#242230}
+}
 </style>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">ِ
-    <title>Wafa Fit</title>
-
-    <!-- أيقونة الموقع القياسية -->
-    <link rel="icon" type="image/png" href="logo.png">
-
-    <!-- أيقونة مخصصة لأجهزة أبل (آيفون/آيباد) عند الإضافة للشاشة الرئيسية -->
-    <link rel="apple-touch-icon" href="logo.png">
 </head>
 
 <body>
@@ -193,14 +240,12 @@ select option{background:#141321;color:white}
 
 <main class="content">
 
-<!-- الرئيسية -->
 <section class="page active" id="home">
  <div class="welcome">
   <h1 id="welcomeName">أهلًا بك 💜</h1>
   <p>كل يوم فرصة جديدة للاهتمام بصحتك.</p>
   <div class="date-chip">📅 <span id="dailyDate"></span></div>
  </div>
-
  <div class="hero">
   <div class="hero-label">إجمالي السعرات المسجلة</div>
   <div class="hero-calories"><span id="homeCalories">0</span> <small>سعرة</small></div>
@@ -209,7 +254,6 @@ select option{background:#141321;color:white}
   <div class="hero-bottom"><span id="calorieRemaining">المتبقي: 0</span><span id="caloriePercent">0%</span></div>
   <div class="limit-alert" id="limitAlert"><strong>⚠️ تجاوزت هدف السعرات اليومي</strong><span id="limitAlertText"></span></div>
  </div>
-
  <div class="section-heading"><h2>ملخص التغذية</h2><span onclick="switchPage('stats')">التفاصيل</span></div>
  <div class="grid-two">
   <div class="metric-card"><div class="metric-icon">🍞</div><div class="metric-title">الكربوهيدرات</div><div class="metric-value"><span id="homeCarbs">0</span><small> جم</small></div></div>
@@ -217,10 +261,8 @@ select option{background:#141321;color:white}
   <div class="metric-card"><div class="metric-icon">🥑</div><div class="metric-title">الدهون</div><div class="metric-value"><span id="homeFat">0</span><small> جم</small></div></div>
   <div class="metric-card"><div class="metric-icon">💧</div><div class="metric-title">الماء اليوم</div><div class="metric-value"><span id="homeWater">0</span><small> مل</small></div></div>
  </div>
-
  <div class="section-heading"><h2>تقدم الماكروز</h2><span>اليوم</span></div>
  <div id="macroProgress"></div>
-
  <div class="section-heading"><h2>شرب الماء 💧</h2><span id="waterGoalText"></span></div>
  <div class="card water-card">
   <div class="water-emoji">🥤</div>
@@ -231,10 +273,8 @@ select option{background:#141321;color:white}
    <div class="water-actions"><button onclick="addWater(250)">+250 مل</button><button onclick="addWater(500)">+500 مل</button><button onclick="removeWater(250)">−250 مل</button></div>
   </div>
  </div>
-
  <div class="section-heading"><h2>آخر الوجبات 🍽️</h2><span onclick="switchPage('foods')">عرض الكل</span></div>
  <div id="homeFoodList" class="food-list"></div>
-
  <div class="section-heading"><h2>النشاط الرياضي</h2><span onclick="switchPage('exercise')">إضافة نشاط</span></div>
  <div class="grid-two">
   <div class="metric-card"><div class="metric-icon">🏃</div><div class="metric-title">عدد الأنشطة</div><div class="metric-value" id="homeExerciseCount">0</div></div>
@@ -243,10 +283,8 @@ select option{background:#141321;color:white}
  <div class="creator">Wafa Fit · ابتكار سلطان الزهراني</div>
 </section>
 
-<!-- الغذاء -->
 <section class="page" id="foods">
  <div class="welcome"><h1>سجل الغذاء 🍎</h1><p>سجل وجباتك ومعلوماتها الغذائية بالتفصيل.</p></div>
-
  <div class="card">
   <div class="input-group"><label>اسم الطعام أو الوجبة</label><input id="foodName" placeholder="مثال: شوفان بالحليب والموز"></div>
   <div class="input-group"><label>السعرات الحرارية</label><input id="foodCalories" type="number" min="0" placeholder="مثال: 350"></div>
@@ -262,17 +300,14 @@ select option{background:#141321;color:white}
   </label>
   <button class="primary-btn" onclick="addFood()">+ تسجيل الوجبة</button>
  </div>
-
  <div class="section-heading"><h2>وجبات اليوم</h2><span id="foodTotalLabel">0</span></div>
  <div id="foodList" class="food-list"></div>
-
  <div class="section-heading"><h2>📚 سجل وجباتي المحفوظة</h2><span id="savedCount">0 وجبة</span></div>
  <p style="font-size:11px;color:var(--muted);line-height:1.8;margin:0 2px 12px">هذه الوجبات محفوظة في جهازك ولا تختفي مع بداية يوم جديد. يمكنك إضافتها إلى سجل اليوم متى أردت.</p>
  <div id="savedMealsList"></div>
  <div class="creator">Wafa Fit · ابتكار سلطان الزهراني</div>
 </section>
 
-<!-- النشاط -->
 <section class="page" id="exercise">
  <div class="welcome"><h1>النشاط الرياضي 🏃</h1><p>سجل نشاطك واحصل على تقدير تقريبي للسعرات المحروقة.</p></div>
  <div class="settings-hero" id="exerciseProfile"></div>
@@ -302,7 +337,6 @@ select option{background:#141321;color:white}
  <div class="creator">Wafa Fit · ابتكار سلطان الزهراني</div>
 </section>
 
-<!-- الإحصائيات -->
 <section class="page" id="stats">
  <div class="welcome"><h1>الإحصائيات 📊</h1><p>تابع تفاصيل التغذية والنشاط اليومي.</p></div>
  <div class="grid-two">
@@ -325,7 +359,6 @@ select option{background:#141321;color:white}
  <div class="creator">Wafa Fit · ابتكار سلطان الزهراني</div>
 </section>
 
-<!-- المساعد -->
 <section class="page" id="coach">
  <div class="welcome"><h1>المساعد الصحي 💜</h1><p>نصائح عامة حول التغذية والعادات الصحية.</p></div>
  <div class="ai-box">
@@ -345,7 +378,6 @@ select option{background:#141321;color:white}
  <div class="creator">Wafa Fit · ابتكار سلطان الزهراني</div>
 </section>
 
-<!-- الإعدادات -->
 <section class="page" id="settings">
  <div class="welcome"><h1>الإعدادات ⚙️</h1><p>إدارة أهدافك ومعلوماتك الشخصية.</p></div>
  <div class="settings-hero"><strong>🎯 أهدافك اليومية</strong><p>عدّل احتياجاتك وأهدافك متى شئت. التغييرات تظهر مباشرة في لوحة المتابعة.</p></div>
@@ -364,7 +396,6 @@ select option{background:#141321;color:white}
  <div class="card" style="font-size:12px;line-height:2;color:var(--muted)">Wafa Fit | وفاء فيت<br>الإصدار 2.0<br>ابتكار سلطان الزهراني</div>
  <div class="creator">Wafa Fit · ابتكار سلطان الزهراني</div>
 </section>
-
 </main>
 
 <nav class="bottom-nav">
@@ -376,7 +407,6 @@ select option{background:#141321;color:white}
 </nav>
 </div>
 
-<!-- إنشاء الملف الشخصي -->
 <div id="onboarding">
  <div class="onboard-inner">
   <div class="onboard-top">
@@ -387,7 +417,6 @@ select option{background:#141321;color:white}
   </div>
   <div class="onboard-card">
    <div class="step-line"><div class="step-dot active" id="stepDot1"></div><div class="step-dot" id="stepDot2"></div></div>
-
    <div id="onboardStep1">
     <div class="step-caption">الخطوة 01 — معلوماتك الشخصية</div>
     <h2 class="onboard-section-title">أهلًا بك! 👋</h2>
@@ -401,7 +430,6 @@ select option{background:#141321;color:white}
     </div>
     <button class="primary-btn" onclick="nextOnboarding()">متابعة إلى أهدافك ←</button>
    </div>
-
    <div id="onboardStep2" style="display:none">
     <div class="step-caption">الخطوة 02 — أهدافك اليومية</div>
     <h2 class="onboard-section-title">خصص أهدافك 🎯</h2>
@@ -457,7 +485,6 @@ function loadData(){
     savedMeals:Array.isArray(x.savedMeals)?x.savedMeals:[],
     overLimitNotified:Boolean(x.overLimitNotified)
    };
-   // ترحيل أهداف النسخة القديمة
    if(data.profile){
     const p=data.profile;
     p.calorieGoal=p.calorieGoal||2000;
@@ -676,13 +703,10 @@ function addFood(){
  if(meal.error){showToast(meal.error);return}
  const item={...meal,id:Date.now(),time:new Date().toLocaleTimeString("ar-SA",{hour:"2-digit",minute:"2-digit"})};
  data.foods.unshift(item);
- if(document.getElementById("saveFoodToLibrary").checked){
-  saveMealToLibrary(meal);
- }
+ if(document.getElementById("saveFoodToLibrary").checked)saveMealToLibrary(meal);
  clearFoodForm();
  persist();updateUI();showToast("تم تسجيل الوجبة 🍽️");
 }
-
 function saveMealToLibrary(meal){
  const exists=data.savedMeals.some(x=>x.name.trim().toLowerCase()===meal.name.trim().toLowerCase()&&
   Number(x.calories)===Number(meal.calories)&&Number(x.carbs)===Number(meal.carbs)&&
@@ -699,11 +723,24 @@ function saveMealToLibrary(meal){
 function addSavedMeal(id){
  const saved=data.savedMeals.find(x=>x.id===id);
  if(!saved)return;
- data.foods.unshift({
-  ...saved,id:Date.now(),
-  time:new Date().toLocaleTimeString("ar-SA",{hour:"2-digit",minute:"2-digit"})
- });
+ data.foods.unshift({...saved,id:Date.now(),time:new Date().toLocaleTimeString("ar-SA",{hour:"2-digit",minute:"2-digit"})});
  persist();updateUI();showToast("تمت إضافة الوجبة المحفوظة إلى سجل اليوم 💜");
+}
+function updateSavedMealType(id,mealType){
+ const allowedMeals=["الفطور","الغداء","العشاء","وجبة خفيفة"];
+ if(!allowedMeals.includes(mealType))return;
+ const saved=data.savedMeals.find(x=>Number(x.id)===Number(id));
+ if(!saved)return;
+ saved.meal=mealType;
+ persist();
+ showToast("تم تحديث نوع الوجبة إلى "+mealType+" 💜");
+}
+function deleteSavedMeal(id){
+ if(!confirm("هل تريد حذف هذه الوجبة من سجل وجباتك المحفوظة نهائيًا؟"))return;
+ data.savedMeals=data.savedMeals.filter(x=>Number(x.id)!==Number(id));
+ persist();
+ updateUI();
+ showToast("تم حذف الوجبة من سجل المحفوظات");
 }
 function renderSavedMeals(){
  const target=document.getElementById("savedMealsList");
@@ -721,7 +758,19 @@ function renderSavedMeals(){
     <div class="macro-box fat"><span>دهون</span><strong>${Number(x.fat)||0} جم</strong></div>
     <div class="macro-box cal"><span>السعرات</span><strong>${Number(x.calories)||0}</strong></div>
    </div>
-   <div class="saved-meal-actions"><button class="primary-btn" onclick="addSavedMeal(${Number(x.id)})">＋ أضف إلى اليوم</button></div>
+   <div class="saved-meal-type">
+    <label for="savedMealType-${Number(x.id)}">نوع الوجبة</label>
+    <select id="savedMealType-${Number(x.id)}" onchange="updateSavedMealType(${Number(x.id)},this.value)">
+     <option value="الفطور" ${x.meal==="الفطور"?"selected":""}>الفطور</option>
+     <option value="الغداء" ${x.meal==="الغداء"?"selected":""}>الغداء</option>
+     <option value="العشاء" ${x.meal==="العشاء"?"selected":""}>العشاء</option>
+     <option value="وجبة خفيفة" ${x.meal==="وجبة خفيفة"?"selected":""}>وجبة خفيفة</option>
+    </select>
+   </div>
+   <div class="saved-meal-actions">
+    <button class="primary-btn" onclick="addSavedMeal(${Number(x.id)})">＋ أضف إلى اليوم</button>
+    <button class="danger-btn" onclick="deleteSavedMeal(${Number(x.id)})">🗑️ حذف من المحفوظات</button>
+   </div>
   </div>`).join("");
 }
 function deleteFood(id){
